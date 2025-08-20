@@ -93,6 +93,12 @@ class NavigationManager {
     }
 
     setupMobileMenu() {
+        // Ensure hamburger exists
+        if (!this.hamburger) {
+            console.error('Hamburger menu not found');
+            return;
+        }
+
         this.hamburger.addEventListener('click', (e) => {
             e.stopPropagation();
             this.navMenu.classList.toggle('active');
@@ -102,7 +108,8 @@ class NavigationManager {
 
         // Close mobile menu when clicking on a link
         this.navLinks.forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', (e) => {
+                // Don't prevent default - let the link work
                 this.navMenu.classList.remove('active');
                 this.hamburger.classList.remove('active');
                 document.body.classList.remove('menu-open');
