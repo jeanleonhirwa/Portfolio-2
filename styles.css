@@ -544,9 +544,31 @@ section {
 }
 
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    display: flex;
+    overflow-x: auto;
     gap: 2rem;
+    padding: 10px 4px 30px 4px; /* Padding for hover effect and scrollbar */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+}
+
+/* Hide scrollbar for clean look but allow scrolling */
+.projects-grid::-webkit-scrollbar {
+    height: 6px;
+}
+
+.projects-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.projects-grid::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 10px;
+}
+
+.projects-grid::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
 }
 
 .project-card {
@@ -558,6 +580,10 @@ section {
     transition: var(--transition);
     position: relative;
     overflow: hidden;
+    min-width: 350px;
+    max-width: 350px;
+    flex: 0 0 auto;
+    scroll-snap-align: center;
 }
 
 .project-card:hover {
