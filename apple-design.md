@@ -1,148 +1,188 @@
-# Apple Human Interface Guidelines (HIG) & Design Principles
+# Apple Human Interface Guidelines (HIG) & Design System
 
-This document outlines the core design principles, UI elements, and patterns that define Apple's ecosystem, specifically focusing on iOS (iPhone) and macOS (MacBook).
+This comprehensive guide details the design philosophy, visual foundations, and interface patterns that define Apple's ecosystem. It is structured to help designers and developers build applications that feel distinctively native to iOS (iPhone) and macOS (Mac).
 
-## 1. Core Design Principles
+---
 
-Apple's design philosophy centers on clarity, deference, and depth.
+## 1. Core Philosophy
+Apple’s design ethos rests on three pillars that differentiate it from other design systems (like Material Design).
 
-*   **Aesthetic Integrity**: The appearance and behavior of an app should integrate well with its function. Serious apps (like Stocks) use subtle, unobtrusive graphics, while games use immersive, playful designs.
-*   **Consistency**: Use standard UI elements, well-known icons, standard text styles, and uniform terminology. The app should feel like part of the OS.
-*   **Direct Manipulation**: Onscreen content stays stationary while users manipulate it. Pinching to zoom, swiping to scroll, and dragging content provide an immediate sense of control.
-*   **Feedback**: Acknowledge actions and show results to keep people informed. Interactive elements should highlight briefly when tapped, progress indicators show status, and sounds/haptics reinforce interactions.
-*   **Metaphors**: Use familiar metaphors (like folders, switches, and trash cans) to make the interface intuitive.
-*   **User Control**: The user, not the app, should be in control. The app suggests actions or warns about consequences, but the user makes the final decision.
+### 1.1 Clarity
+*   **Text Legibility**: Text size, weight, and color must prioritize readability.
+*   **Iconography**: Icons should be precise and lucid, communicating meaning instantly.
+*   **Negative Space**: Use ample whitespace to denote hierarchy and importance, avoiding clutter.
+*   **Functionality**: Decoration should never overshadow functionality.
 
-## 2. Typography
+### 1.2 Deference
+*   **Content First**: The UI should recede, allowing content to take center stage.
+*   **Fluid Motion**: Motion explains relationships and transitions but shouldn't be gratuitous.
+*   **Lightness**: Use translucent backgrounds and blurs to hint at context without obscuring content.
 
-Apple's system font is **San Francisco (SF)**. It is designed for unmatched legibility, clarity, and consistency.
+### 1.3 Depth
+*   **Visual Layers**: Distinct visual layers and realistic motion convey hierarchy and position.
+*   **Context**: Translucency provides a sense of place (knowing what is behind the current view).
+*   **Interaction**: Touch and gestures should feel physical and responsive.
 
-### Font Families
-*   **SF Pro**: The main system font for iOS, macOS, and iPadOS.
-    *   *SF Pro Text*: For sizes below 20pt.
-    *   *SF Pro Display*: For sizes 20pt and larger.
-*   **SF Compact**: Used primarily for Apple Watch (watchOS), designed with flat sides to be legible in tight vertical spaces.
-*   **SF Mono**: Used for code and technical data.
-*   **New York**: A serif typeface designed to complement SF Pro, often used in reading-centric apps (like Apple Books or News).
+---
 
-### Hierarchy & Sizing (iOS Standards)
-Apple uses **Dynamic Type** to automatically adjust font weight, size, and leading based on user settings.
+## 2. Visual Foundations
 
-| Style | Weight | Size (Default) | Leading |
-| :--- | :--- | :--- | :--- |
-| **Large Title** | Regular | 34pt | 41pt |
-| **Title 1** | Regular | 28pt | 34pt |
-| **Title 2** | Regular | 22pt | 28pt |
-| **Title 3** | Regular | 20pt | 25pt |
-| **Headline** | Semibold | 17pt | 22pt |
-| **Body** | Regular | 17pt | 22pt |
-| **Callout** | Regular | 16pt | 21pt |
-| **Subhead** | Regular | 15pt | 20pt |
-| **Footnote** | Regular | 13pt | 18pt |
-| **Caption 1** | Regular | 12pt | 16pt |
-| **Caption 2** | Regular | 11pt | 13pt |
+### 2.1 Typography
+Apple uses the **San Francisco (SF)** family. It is a neo-grotesque sans-serif typeface designed for legibility.
 
-*   **Tracking**: SF Pro automatically adjusts letter spacing (tracking). Larger sizes have tighter tracking; smaller sizes have looser tracking.
+#### Font Families
+*   **SF Pro**: The system font for iOS, macOS, and tvOS.
+    *   *SF Pro Display*: 20pt+. Used for titles and headers.
+    *   *SF Pro Text*: <20pt. Optimized for body text with wider spacing.
+*   **SF Mono**: Monospaced font for code, data, and technical numerals.
+*   **SF Compact**: Flat-sided font optimized for Apple Watch.
+*   **New York**: A companion serif font for reading-heavy contexts (Books, News).
 
-## 3. Color
+#### iOS Dynamic Type Scale (Default)
+Support Dynamic Type to let users adjust text size.
 
-Colors are used to indicate interactivity, state, and brand identity.
+| Style | Weight | Size (pts) | Leading (pts) | Usage |
+| :--- | :--- | :--- | :--- | :--- |
+| **Large Title** | Regular | 34 | 41 | Top of a navigation stack (transitioning to inline). |
+| **Title 1** | Regular | 28 | 34 | Primary page headings. |
+| **Title 2** | Regular | 22 | 28 | Section headings. |
+| **Title 3** | Regular | 20 | 25 | Subsection headings. |
+| **Headline** | Semibold | 17 | 22 | Paragraph headers. |
+| **Body** | Regular | 17 | 22 | Primary content text. |
+| **Callout** | Regular | 16 | 21 | Featured text or pull quotes. |
+| **Subhead** | Regular | 15 | 20 | Secondary metadata (e.g., list item descriptions). |
+| **Footnote** | Regular | 13 | 18 | Timestamps, disclaimers. |
+| **Caption 1** | Regular | 12 | 16 | Image captions, subtle labels. |
+| **Caption 2** | Regular | 11 | 13 | Smallest legible text. |
 
-### System Colors
-Apple provides semantic system colors that automatically adapt to Light and Dark modes.
+### 2.2 Color System
+Apple uses **Semantic Colors** that adapt automatically to Light and Dark modes. **Never hardcode hex values** if possible; use system tokens.
 
-*   **System Blue**: `#007AFF` (Light) / `#0A84FF` (Dark) - Standard interactive color (buttons, links).
-*   **System Red**: `#FF3B30` (Light) / `#FF453A` (Dark) - Destructive actions, errors.
-*   **System Green**: `#34C759` (Light) / `#30D158` (Dark) - Success, active state.
-*   **System Gray**: A range of 6 grays (`SystemGray` to `SystemGray6`) for backgrounds and separators.
+#### Tint Colors
+*   **System Blue**: Default interactive elements (Buttons, Links).
+*   **System Red**: Destructive actions (Delete, Remove).
+*   **System Green**: Success states, "On" switches.
+*   **System Orange/Yellow**: Warnings, attention.
 
-### Background & Surface Layers
-*   **iOS**:
-    *   *System Background*: Primary white/black background.
-    *   *Secondary System Background*: Slightly lighter/darker for grouped table views.
-*   **macOS**: Uses specific material colors like `windowBackgroundColor` or `controlBackgroundColor`.
+#### Backgrounds (The Layering Model)
+*   **System Background**: Pure White (Light) / Pure Black (Dark). Main canvas.
+*   **Secondary Background**: Light Gray (Light) / Dark Gray (Dark). Used for Grouped Table Views.
+*   **Tertiary Background**: Even lighter/darker. Used for nested grouping.
 
-### Dark Mode
-*   Avoid pure black (`#000000`) for backgrounds in Dark Mode unless strictly necessary (e.g., OLED optimization). Prefer dark greys (e.g., `#1C1C1E`) to reduce eye strain and smearing.
-*   Colors in Dark Mode are generally slightly more vibrant (lighter/pastel) to ensure sufficient contrast against dark backgrounds.
+#### Grays (Neutrals)
+Apple provides 6 semantic grays (`SystemGray` to `SystemGray6`).
+*   **Light Mode**: Gray 6 is the lightest (near white).
+*   **Dark Mode**: Gray 6 is the darkest (near black).
+*   *Note*: This inversion ensures contrast is maintained.
 
-## 4. Layout & Spacing
+#### Dark Mode Elevation
+In Material Design, elevation is shown via lighter surfaces and shadows. In Apple Design:
+*   **No Shadows**: Dark mode relies less on shadows.
+*   **Elevation**: Elevation is often depicted by **lighter** background grays on top of darker ones.
+*   **Vibrancy**: Translucent materials become more prominent to separate layers.
 
-### The Grid
-*   **8pt Grid System**: Most layout dimensions, margins, and padding are multiples of 8 (8, 16, 24, 32).
-*   **4pt Sub-grid**: Used for tighter spacing (e.g., between text and an icon).
+### 2.3 Materials (Glassmorphism)
+Blur effects ("Materials") create a sense of depth and context.
 
-### Touch Targets (iOS)
-*   **Minimum Size**: 44x44 points. Even if the visual icon is smaller, the tappable area must be at least 44pt to ensure accuracy.
+*   **Ultra Thin Material**: Highly translucent (e.g., Spotlight Search).
+*   **Thin Material**: Standard HUDs.
+*   **Regular Material**: Default sidebar or tab bar background.
+*   **Thick Material**: Nav bars, higher contrast needs.
+*   **Chrome Material**: System chrome, almost opaque.
 
-### Safe Areas
-*   Respect the **Safe Area** to avoid content being clipped by rounded corners, the notch/Dynamic Island, or the home indicator.
-*   **Standard Margins**: typically 16pt or 20pt on the sides of the screen.
+### 2.4 Iconography (SF Symbols)
+A library of 5,000+ vector icons seamlessly integrated with text.
 
-## 5. Iconography (SF Symbols)
+*   **Weights**: Match text weights (Ultralight to Black).
+*   **Scales**: Small, Medium, Large (match line-height).
+*   **Rendering Modes**:
+    1.  **Monochrome**: Single color (tint).
+    2.  **Hierarchical**: Single color with varying opacity (e.g., cloud is 100%, rain is 50%).
+    3.  **Palette**: Two or more distinct colors.
+    4.  **Multicolor**: Full intrinsic colors (e.g., a green leaf icon).
 
-**SF Symbols** is a library of over 5,000 vector icons integrated into the San Francisco font.
+---
 
-*   **Scale & Weight**: Symbols align seamlessly with text weights (Light, Regular, Bold) and scales (Small, Medium, Large).
-*   **Rendering**: Supports monochrome, hierarchical (multiple shades of one color), palette (multiple colors), and multicolor rendering.
-*   **Animation**: SF Symbols 5+ supports native animations (bounce, pulse, variable color).
+## 3. iOS Design Patterns (Mobile)
 
-## 6. UI Components & Materials
+### 3.1 Layout & Grid
+*   **8pt Grid**: Align elements to an 8pt grid.
+*   **Margins**: Standard layout margins are **16pt** (iPhone SE/older) or **20pt** (modern iPhones).
+*   **Touch Targets**: Minimum **44x44pt** tappable area.
 
-### Materials (Blur/Translucency)
-Apple heavily uses "materials" (blur effects) to create depth and context. This is often called **Glassmorphism**.
+### 3.2 Navigation Structure
+*   **Tab Bar**: Flat, bottom navigation for parallel hierarchies (3-5 tabs).
+*   **Navigation Bar**: Top bar showing title, Back button (left), and Action/Edit button (right).
+    *   *Large Title*: Expands when at the top, collapses to *Inline Title* on scroll.
+*   **Search**: Typically a search bar inside the Navigation Bar, often hidden under a swipe-down gesture.
 
-*   **Usage**: Control Centers, Sidebars (macOS), Tab Bars, Navigation Bars.
-*   **Types**:
-    *   *Ultra Thin / Thin / Regular / Thick / Chrome*: Different levels of background blur (Vibrancy).
-    *   Allows content behind the layer to "shine through," maintaining context.
+### 3.3 UI Elements
+*   **Lists (Table Views)**:
+    *   *Plain*: Full width, dividers (separators) inset by 16pt/60pt.
+    *   *Grouped*: Rounded rectangles sitting on a secondary background color.
+*   **Cards**: Rounded rectangles (Corner radius: usually **12pt - 20pt**) used for distinct content blocks.
+*   **Modals (Sheets)**:
+    *   Views that slide up from the bottom, covering most of the screen.
+    *   "Grabber" handle at the top indicating it can be swiped down to close.
+    *   Used for tasks, settings, or details that don't require full navigation context switch.
+*   **Action Sheets**: Slide up from bottom with 2+ choices (e.g., "Delete", "Cancel"). Destructive options are Red.
 
-### Navigation (iOS vs. macOS)
-*   **iOS**:
-    *   *Tab Bar*: Bottom navigation for top-level hierarchy.
-    *   *Navigation Bar*: Top bar for hierarchy navigation (Back button, Title, Edit).
-*   **macOS**:
-    *   *Sidebar*: Primary navigation on the left (transparent/translucent).
-    *   *Toolbar*: Top controls unified with the window title bar.
+### 3.4 Inputs
+*   **Text Fields**: Rounded corners, clear button on right.
+*   **Pickers**: Scrolling wheel for selecting dates/values (distinctive iOS interaction).
+*   **Segmented Controls**: Horizontal pill-shaped toggle for mutually exclusive options.
+*   **Switches**: Green for "On", Gray for "Off". Immediate action.
 
-### Buttons
-*   **iOS**: Full-width rounded rectangles (filled or tinted) or borderless text buttons in navigation bars.
-*   **macOS**: Push buttons, toggle buttons, and pop-up buttons suitable for mouse interaction.
+---
 
-## 7. Motion & Animation
+## 4. macOS Design Patterns (Desktop)
 
-Motion should be purposeful, not just decorative. It explains layout changes and spatial relationships.
+### 4.1 Window Anatomy
+*   **Sidebar**: Full-height, translucent (material) background on the left. Used for navigation.
+*   **Toolbar**: Unifies the window title and controls. Icons are often glyph-style (borderless) until hovered.
+*   **Content Area**: White/Black opaque background for the main task.
 
-### Animation Types
-*   **Spring Animation**: The standard for Apple motion. It mimics physical mass and friction (no rigid linear movements).
-    *   *Damping*: Controls how much the object oscillates before stopping.
-    *   *Stiffness*: Controls the speed of the spring.
+### 4.2 Controls & Interactions
+*   **Point & Click**: Targets are smaller than iOS. No minimum 44pt rule, but hit-testing should be generous.
+*   **Push Buttons**: Rounded rectangles with a gradient or solid fill. "Default" action is blue (return key triggers it).
+*   **Context Menus**: Right-click menus. Essential for power user workflows.
+*   **Checkboxes & Radio Buttons**: Standard desktop controls, unlike iOS toggles.
+*   **Tooltips**: Essential for icon-only toolbar buttons.
+
+### 4.3 App Icons
+*   **Shape**: Uniform rounded rectangle (Squircle).
+*   **Style**: Realistic, "physical" rendering. Often depicts tools (hammer, pen) or materials (paper, metal).
+*   **Shadow**: A consistent drop shadow to imply the icon is sitting on a desk.
+
+---
+
+## 5. Motion & Animation
+
+Apple's motion feels "physical" due to spring physics.
+
+*   **Springs**: Do not use linear easing. Use spring parameters (Mass, Stiffness, Damping).
+    *   *Interactive*: Motion tracks the finger 1:1 (e.g., swiping a card).
+    *   *Impulse*: When the finger releases, the object continues with the momentum before settling.
 *   **Transitions**:
-    *   *Push/Pop*: Lateral movement for navigating hierarchy (Master -> Detail).
-    *   *Modal Presentation*: Sheets sliding up from the bottom (implies a temporary context).
-    *   *Zoom/Morph*: Opening an app or folder (expanding from source).
-*   **Parallax**: Subtle depth effects (e.g., on icons or Home Screen wallpaper).
+    *   *Navigation Push*: New screen slides in from right, old slides out left (parallax).
+    *   *Sheet Presentation*: Rear layer scales down slightly, new sheet slides up over it.
+    *   *App Launch*: Icon expands into the app window (Zoom transition).
 
-## 8. Haptics (iOS)
+---
 
-Haptic feedback provides physical confirmation of actions.
+## 6. Accessibility (A11y)
 
-*   **Impact Styles**:
-    *   *Light*: Spinner ticks, subtle interactions.
-    *   *Medium*: Toggle switches, standard buttons.
-    *   *Heavy*: firm snaps, distinct actions.
-*   **Notification Types**:
-    *   *Success*: Two quick pulses.
-    *   *Warning*: Two sharp pulses.
-    *   *Error*: A rapid, distinctive vibration.
+Accessibility is a first-class citizen in Apple Design.
 
-## 9. App Icons
+*   **VoiceOver**: All custom controls must have `accessibilityLabel` and `accessibilityHint`.
+*   **Dynamic Type**: Apps must verify layouts don't break when users set font size to XXXL.
+*   **Reduce Motion**: Respect the user's system setting to disable parallax/zooms (replace with simple fades).
+*   **Contrast**: Ensure 4.5:1 contrast ratio for text, even with transparency.
 
-### iOS
-*   **Shape**: Rounded rectangle (Squircle).
-*   **Grid**: Internal grid to align circles and squares optically.
-*   **Style**: Simple, focused point of interest, no transparent backgrounds.
+---
 
-### macOS
-*   **Shape**: Rounded rectangle (uniform across the system since Big Sur).
-*   **Style**: Realistic rendering, drop shadows, slightly tilted perspective (sometimes), implying a physical object.
+## 7. Resources & Tools
+
+*   **SF Symbols App**: Mac app to browse and export icon vectors.
+*   **Apple Design Resources**: Official Figma/Sketch kits available at developer.apple.com.
+*   **Human Interface Guidelines (HIG)**: The official web documentation.

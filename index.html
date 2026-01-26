@@ -251,130 +251,143 @@
     <section id="projects" class="projects">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <!-- Snap Price Project -->
-                <div class="project-card featured">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <img src="assets/snapprice-icon.svg" alt="Snap Price Logo"
-                                style="width: 24px; height: 24px;">
+            <div class="projects-carousel" id="projects-carousel">
+                <!-- Navigation Arrows -->
+                <button class="projects-nav projects-nav-prev disabled" id="projects-prev" aria-label="Previous project">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="projects-nav projects-nav-next" id="projects-next" aria-label="Next project">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <div class="projects-grid" id="projects-grid">
+                    <!-- Snap Price Project -->
+                    <div class="project-card featured">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <img src="assets/snapprice-icon.svg" alt="Snap Price Logo"
+                                    style="width: 24px; height: 24px;">
+                            </div>
+                            <div class="project-status">Mobile</div>
                         </div>
-                        <div class="project-status">Mobile</div>
+                        <h3 class="project-title">Snap Price</h3>
+                        <p class="project-description">AI-powered product identification and price discovery app</p>
+                        <div class="project-features">
+                            <ul>
+                                <li>Instant product identification via AI</li>
+                                <li>Global & local price estimation</li>
+                                <li>E-commerce & physical shop locations</li>
+                                <li>Multi-currency support (RW, USD)</li>
+                            </ul>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Gemini API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://snapprice-smoky.vercel.app/" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Waitlist
+                            </a>
+                        </div>
                     </div>
-                    <h3 class="project-title">Snap Price</h3>
-                    <p class="project-description">AI-powered product identification and price discovery app</p>
-                    <div class="project-features">
-                        <ul>
-                            <li>Instant product identification via AI</li>
-                            <li>Global & local price estimation</li>
-                            <li>E-commerce & physical shop locations</li>
-                            <li>Multi-currency support (RW, USD)</li>
-                        </ul>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Flutter</span>
-                        <span class="tech-tag">Firebase</span>
-                        <span class="tech-tag">Gemini API</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://snapprice-smoky.vercel.app/" target="_blank" class="project-link">
-                            <i class="fas fa-external-link-alt"></i> Live Waitlist
-                        </a>
-                    </div>
-                </div>
 
-                <!-- Notexa Project -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-brain"></i>
+                    <!-- Notexa Project -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="project-status">Live</div>
                         </div>
-                        <div class="project-status">Live</div>
+                        <h3 class="project-title">Notexa</h3>
+                        <p class="project-description">AI-powered student learning platform that revolutionizes education
+                        </p>
+                        <div class="project-features">
+                            <ul>
+                                <li>Academic summary and quiz generation</li>
+                                <li>Detailed note generation from topics</li>
+                                <li>PDF/DOCX note summarization</li>
+                                <li>Smart quiz generation from uploads</li>
+                                <li>Intelligent revision helper</li>
+                            </ul>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Gemini API</span>
+                            <span class="tech-tag">Streamlit</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://notexa.streamlit.app" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
                     </div>
-                    <h3 class="project-title">Notexa</h3>
-                    <p class="project-description">AI-powered student learning platform that revolutionizes education
-                    </p>
-                    <div class="project-features">
-                        <ul>
-                            <li>Academic summary and quiz generation</li>
-                            <li>Detailed note generation from topics</li>
-                            <li>PDF/DOCX note summarization</li>
-                            <li>Smart quiz generation from uploads</li>
-                            <li>Intelligent revision helper</li>
-                        </ul>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Firebase</span>
-                        <span class="tech-tag">Gemini API</span>
-                        <span class="tech-tag">Streamlit</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://notexa.streamlit.app" target="_blank" class="project-link">
-                            <i class="fas fa-external-link-alt"></i> Live Demo
-                        </a>
-                    </div>
-                </div>
 
-                <!-- Hop n' splat Project -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-gamepad"></i>
+                    <!-- Hop n' splat Project -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <div class="project-status">Mobile</div>
                         </div>
-                        <div class="project-status">Mobile</div>
+                        <h3 class="project-title">Hop n' Splat</h3>
+                        <p class="project-description">Fun tap-to-jump mobile game optimized for low-end devices</p>
+                        <div class="project-features">
+                            <ul>
+                                <li>Simple tap-to-jump mechanics</li>
+                                <li>Multiple character skins</li>
+                                <li>Power-ups (double jump, slow motion)</li>
+                                <li>Special effects and themes</li>
+                            </ul>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Godot</span>
+                            <span class="tech-tag">GDScript</span>
+                            <span class="tech-tag">AdMob</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
                     </div>
-                    <h3 class="project-title">Hop n' Splat</h3>
-                    <p class="project-description">Fun tap-to-jump mobile game optimized for low-end devices</p>
-                    <div class="project-features">
-                        <ul>
-                            <li>Simple tap-to-jump mechanics</li>
-                            <li>Multiple character skins</li>
-                            <li>Power-ups (double jump, slow motion)</li>
-                            <li>Special effects and themes</li>
-                        </ul>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Godot</span>
-                        <span class="tech-tag">GDScript</span>
-                        <span class="tech-tag">AdMob</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">
-                            <i class="fas fa-download"></i> Download
-                        </a>
-                    </div>
-                </div>
 
-                <!-- QuickBeam Project -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-share-alt"></i>
+                    <!-- QuickBeam Project -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-share-alt"></i>
+                            </div>
+                            <div class="project-status">Desktop</div>
                         </div>
-                        <div class="project-status">Desktop</div>
-                    </div>
-                    <h3 class="project-title">QuickBeam</h3>
-                    <p class="project-description">Desktop app for high-speed offline file sharing via P2P network</p>
-                    <div class="project-features">
-                        <ul>
-                            <li>Scan for nearby devices</li>
-                            <li>Secure pairing system</li>
-                            <li>File/folder sharing with progress tracking</li>
-                            <li>High-speed P2P transfers</li>
-                        </ul>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">PyQt5</span>
-                        <span class="tech-tag">P2P</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://quickbeam.com" target="_blank" class="project-link">
-                            <i class="fas fa-download"></i> Download
-                        </a>
+                        <h3 class="project-title">QuickBeam</h3>
+                        <p class="project-description">Desktop app for high-speed offline file sharing via P2P network</p>
+                        <div class="project-features">
+                            <ul>
+                                <li>Scan for nearby devices</li>
+                                <li>Secure pairing system</li>
+                                <li>File/folder sharing with progress tracking</li>
+                                <li>High-speed P2P transfers</li>
+                            </ul>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">PyQt5</span>
+                            <span class="tech-tag">P2P</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://quickbeam.com" target="_blank" class="project-link">
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
                     </div>
                 </div>
+                
+                <!-- Pagination Dots -->
+                <div class="projects-pagination" id="projects-pagination"></div>
             </div>
         </div>
     </section>
