@@ -1,0 +1,12 @@
+<svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Camera Brackets -->
+  <path d="M25 15H15V25" stroke="#D04437" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M75 15H85V25" stroke="#D04437" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M25 85H15V75" stroke="#D04437" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M75 85H85V75" stroke="#D04437" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Center Price Tag -->
+  <rect x="35" y="35" width="30" height="30" rx="8" fill="#D04437"/>
+  <path d="M50 45V55M45 50H55" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  <!-- Accent Notch -->
+  <path d="M85 70L92 77L85 84V70Z" fill="#D04437"/>
+</svg>
