@@ -776,16 +776,463 @@ section {
 }
 
 /* ============================================
-   9. SKILLS SECTION
+   9. SKILLS SECTION - Apple App Icon Grid
    ============================================ */
 .skills {
     background: var(--background-secondary);
 }
 
-.skills-grid {
+/* App Grid Container */
+.app-grid-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Category Labels - Apple style section headers */
+.app-category-label {
+    font-size: var(--footnote-size);
+    font-weight: 600;
+    color: var(--label-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
+    padding-left: var(--spacing-xs);
+}
+
+.app-category-label:first-child {
+    margin-top: 0;
+}
+
+/* App Icon Grid - iPhone Home Screen Layout */
+.app-icon-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
     gap: var(--spacing-lg);
+    justify-items: center;
+}
+
+@media (min-width: 600px) {
+    .app-icon-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media (min-width: 800px) {
+    .app-icon-grid {
+        grid-template-columns: repeat(8, 1fr);
+    }
+}
+
+/* Individual App Icon */
+.app-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    cursor: pointer;
+    transition: transform var(--spring-duration-fast) var(--spring-bounce);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.app-icon:hover {
+    transform: scale(1.08);
+}
+
+.app-icon:active {
+    transform: scale(0.95);
+}
+
+/* App Icon Wrapper - The Squircle */
+.app-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13.5px;
+    background: linear-gradient(145deg, var(--fill-tertiary), var(--fill-quaternary));
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.08),
+        0 1px 2px rgba(0, 0, 0, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all var(--spring-duration-fast) var(--spring-bounce);
+    position: relative;
+    overflow: hidden;
+}
+
+.app-icon-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, transparent 100%);
+    border-radius: 13.5px 13.5px 0 0;
+    pointer-events: none;
+}
+
+[data-theme="dark"] .app-icon-wrapper {
+    background: linear-gradient(145deg, var(--background-tertiary), var(--background-secondary));
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.3),
+        0 1px 2px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.app-icon:hover .app-icon-wrapper {
+    box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.12),
+        0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.app-icon-wrapper i {
+    font-size: 32px;
+    transition: transform var(--spring-duration-fast) var(--spring-bounce);
+}
+
+.app-icon:hover .app-icon-wrapper i {
+    transform: scale(1.05);
+}
+
+/* App Icon Label */
+.app-icon-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--label-primary);
+    text-align: center;
+    max-width: 76px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Technology-specific icon colors */
+.app-icon.javascript .app-icon-wrapper {
+    background: linear-gradient(145deg, #F7DF1E, #E5CD00);
+}
+
+.app-icon.javascript .app-icon-wrapper i {
+    color: #323330;
+}
+
+.app-icon.python .app-icon-wrapper {
+    background: linear-gradient(145deg, #3776AB, #2B5F8A);
+}
+
+.app-icon.python .app-icon-wrapper i {
+    color: #FFD43B;
+}
+
+.app-icon.dart .app-icon-wrapper {
+    background: linear-gradient(145deg, #0175C2, #01568A);
+}
+
+.app-icon.dart .app-icon-wrapper i {
+    color: white;
+}
+
+.app-icon.gdscript .app-icon-wrapper,
+.app-icon.godot .app-icon-wrapper {
+    background: linear-gradient(145deg, #478CBF, #3A7199);
+}
+
+.app-icon.gdscript .app-icon-wrapper i,
+.app-icon.godot .app-icon-wrapper i {
+    color: white;
+}
+
+.app-icon.react .app-icon-wrapper {
+    background: linear-gradient(145deg, #20232a, #16181d);
+}
+
+.app-icon.react .app-icon-wrapper i {
+    color: #61DAFB;
+}
+
+.app-icon.flutter .app-icon-wrapper {
+    background: linear-gradient(145deg, #02569B, #014477);
+}
+
+.app-icon.flutter .app-icon-wrapper i {
+    color: #54C5F8;
+}
+
+.app-icon.django .app-icon-wrapper {
+    background: linear-gradient(145deg, #092E20, #051A12);
+}
+
+.app-icon.django .app-icon-wrapper i {
+    color: #44B78B;
+}
+
+.app-icon.tensorflow .app-icon-wrapper {
+    background: linear-gradient(145deg, #FF6F00, #CC5900);
+}
+
+.app-icon.tensorflow .app-icon-wrapper i {
+    color: white;
+}
+
+.app-icon.bootstrap .app-icon-wrapper {
+    background: linear-gradient(145deg, #7952B3, #5E3E8E);
+}
+
+.app-icon.bootstrap .app-icon-wrapper i {
+    color: white;
+}
+
+.app-icon.numpy .app-icon-wrapper {
+    background: linear-gradient(145deg, #013243, #011E28);
+}
+
+.app-icon.numpy .app-icon-wrapper i {
+    color: #4DABCF;
+}
+
+.app-icon.pandas .app-icon-wrapper {
+    background: linear-gradient(145deg, #150458, #0D0338);
+}
+
+.app-icon.pandas .app-icon-wrapper i {
+    color: white;
+}
+
+.app-icon.firebase .app-icon-wrapper {
+    background: linear-gradient(145deg, #FFCA28, #FFA000);
+}
+
+.app-icon.firebase .app-icon-wrapper i {
+    color: #F57C00;
+}
+
+.app-icon.aws .app-icon-wrapper {
+    background: linear-gradient(145deg, #232F3E, #161D26);
+}
+
+.app-icon.aws .app-icon-wrapper i {
+    color: #FF9900;
+}
+
+.app-icon.docker .app-icon-wrapper {
+    background: linear-gradient(145deg, #2496ED, #1A7AC2);
+}
+
+.app-icon.docker .app-icon-wrapper i {
+    color: white;
+}
+
+.app-icon.postgresql .app-icon-wrapper {
+    background: linear-gradient(145deg, #336791, #274F6D);
+}
+
+.app-icon.postgresql .app-icon-wrapper i {
+    color: white;
+}
+
+.app-icon.mongodb .app-icon-wrapper {
+    background: linear-gradient(145deg, #47A248, #358536);
+}
+
+.app-icon.mongodb .app-icon-wrapper i {
+    color: white;
+}
+
+.app-icon.kubernetes .app-icon-wrapper {
+    background: linear-gradient(145deg, #326CE5, #2553B8);
+}
+
+.app-icon.kubernetes .app-icon-wrapper i {
+    color: white;
+}
+
+.app-icon.git .app-icon-wrapper {
+    background: linear-gradient(145deg, #F05032, #C13E26);
+}
+
+.app-icon.git .app-icon-wrapper i {
+    color: white;
+}
+
+.app-icon.vscode .app-icon-wrapper {
+    background: linear-gradient(145deg, #007ACC, #005A9E);
+}
+
+.app-icon.vscode .app-icon-wrapper i {
+    color: white;
+}
+
+.app-icon.figma .app-icon-wrapper {
+    background: linear-gradient(145deg, #F24E1E, #C13E17);
+}
+
+.app-icon.figma .app-icon-wrapper i {
+    color: white;
+}
+
+/* ============================================
+   JIGGLE MODE - iOS Edit Mode Easter Egg
+   ============================================ */
+
+/* Jiggle animation keyframes - subtle random wobble like iOS */
+@keyframes jiggle {
+
+    0%,
+    100% {
+        transform: rotate(-1deg) scale(1);
+    }
+
+    25% {
+        transform: rotate(1.5deg) scale(1.02);
+    }
+
+    50% {
+        transform: rotate(-1.5deg) scale(1);
+    }
+
+    75% {
+        transform: rotate(1deg) scale(1.01);
+    }
+}
+
+@keyframes jiggle-alt {
+
+    0%,
+    100% {
+        transform: rotate(1deg) scale(1.01);
+    }
+
+    25% {
+        transform: rotate(-1.5deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(1.5deg) scale(1.02);
+    }
+
+    75% {
+        transform: rotate(-1deg) scale(1);
+    }
+}
+
+/* Jiggle mode active state */
+.app-grid-container.jiggle-mode .app-icon {
+    animation: jiggle 0.15s ease-in-out infinite;
+    cursor: grab;
+}
+
+/* Alternate animation for variety */
+.app-grid-container.jiggle-mode .app-icon:nth-child(even) {
+    animation: jiggle-alt 0.15s ease-in-out infinite;
+    animation-delay: 0.05s;
+}
+
+/* Slight delay variations for more organic feel */
+.app-grid-container.jiggle-mode .app-icon:nth-child(3n) {
+    animation-delay: 0.08s;
+}
+
+.app-grid-container.jiggle-mode .app-icon:nth-child(5n) {
+    animation-delay: 0.12s;
+}
+
+/* Delete badge that appears in jiggle mode */
+.app-icon .delete-badge {
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    width: 22px;
+    height: 22px;
+    background: var(--system-gray);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.2s var(--spring-bounce);
+    pointer-events: none;
+    z-index: 10;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.app-icon .delete-badge::before,
+.app-icon .delete-badge::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    background: white;
+    border-radius: 1px;
+}
+
+.app-icon .delete-badge::before {
+    transform: rotate(45deg);
+}
+
+.app-icon .delete-badge::after {
+    transform: rotate(-45deg);
+}
+
+.app-grid-container.jiggle-mode .app-icon .delete-badge {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.app-grid-container.jiggle-mode .app-icon .delete-badge:hover {
+    background: var(--system-red);
+    transform: scale(1.15);
+}
+
+/* Done button that appears in jiggle mode */
+.jiggle-done-btn {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    padding: 8px 16px;
+    background: var(--fill-tertiary);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: none;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--system-blue);
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s var(--spring-bounce);
+    pointer-events: none;
+    z-index: 1000;
+    box-shadow: var(--shadow-medium);
+}
+
+.jiggle-done-btn.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.jiggle-done-btn:hover {
+    background: var(--system-blue);
+    color: white;
+}
+
+/* Hint text for long press */
+.jiggle-hint {
+    text-align: center;
+    font-size: var(--caption1-size);
+    color: var(--label-tertiary);
+    margin-top: var(--spacing-lg);
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.app-grid-container.jiggle-mode+.jiggle-hint {
+    opacity: 0;
 }
 
 /* Skill Category - Grouped style card */
@@ -1276,115 +1723,195 @@ section {
 }
 
 /* ============================================
-   11. CONTACT SECTION
+   11. CONTACT SECTION - Apple Style
    ============================================ */
 .contact {
+    background: var(--background-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact .container {
+    width: 100%;
+    /* Ensure container takes full width */
+}
+
+.contact-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    /* Side by side on desktop */
+    align-items: flex-start;
+    /* Start alignment to handle different card heights */
+    gap: var(--spacing-xxl);
+}
+
+.contact-card {
+    flex: 1;
+    /* Equal width cards */
+}
+
+/* Contact Card - Grouped Style */
+.contact-card {
+    background: var(--background-grouped-secondary);
+    border-radius: var(--radius-xlarge);
+    overflow: hidden;
+    box-shadow: var(--shadow-small);
+}
+
+[data-theme="dark"] .contact-card {
     background: var(--background-secondary);
 }
 
-.contact-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-xxl);
-    align-items: start;
+.card-header {
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: transparent;
 }
 
-.contact-info h3 {
-    font-size: var(--title2-size);
-    font-weight: 600;
-    margin-bottom: var(--spacing-md);
-    color: var(--label-primary);
-}
-
-.contact-info>p {
-    font-size: var(--callout-size);
-    line-height: 1.7;
+.card-header h3 {
+    font-size: var(--footnote-size);
+    text-transform: uppercase;
     color: var(--label-secondary);
-    margin-bottom: var(--spacing-xl);
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: 0.5px;
 }
 
-.contact-details {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
+.card-body {
+    padding: 0;
+    background: var(--background-tertiary);
+    /* Lighter background for items */
 }
 
-.contact-item {
+/* Contact Row / List Item */
+.contact-row,
+.form-row {
     display: flex;
     align-items: center;
-    gap: var(--spacing-md);
-    padding: var(--spacing-md);
+    padding: 12px var(--spacing-lg);
     background: var(--fill-quaternary);
-    border-radius: var(--radius-medium);
-    border: 0.5px solid var(--separator);
-    transition: all var(--spring-duration-fast) var(--spring-smooth);
+    text-decoration: none;
+    color: var(--label-primary);
+    transition: background-color 0.2s ease;
+    min-height: 44px;
+    /* iOS minimum touch target */
 }
 
-.contact-item:hover {
+.contact-row:active {
     background: var(--fill-tertiary);
 }
 
-.contact-item i {
-    width: 24px;
-    font-size: 18px;
-    color: var(--system-blue);
+/* Icon Box (Squircle) */
+.icon-box {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    /* Squircle-ish */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--spacing-md);
+    color: white;
+    font-size: 14px;
+    flex-shrink: 0;
 }
 
-.contact-item span {
-    font-size: var(--subhead-size);
-    color: var(--label-primary);
+.icon-box.blue {
+    background: #007AFF;
 }
 
-/* Contact Form - Apple style grouped */
-.contact-form {
-    background: var(--background-grouped-secondary);
-    padding: var(--spacing-lg);
-    border-radius: var(--radius-xxlarge);
-    box-shadow: var(--shadow-medium);
-    border: 0.5px solid var(--separator);
+.icon-box.green {
+    background: #34C759;
 }
 
-[data-theme="dark"] .contact-form {
-    background: var(--background-secondary);
+.icon-box.orange {
+    background: #FF9500;
 }
 
-.form-group {
-    margin-bottom: var(--spacing-md);
+.row-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
-.form-group input,
-.form-group textarea {
+.row-label {
+    font-size: var(--body-size);
+    font-weight: 400;
+}
+
+.row-value {
+    font-size: var(--caption1-size);
+    color: var(--label-secondary);
+}
+
+.row-arrow {
+    color: var(--label-tertiary);
+    font-size: 14px;
+}
+
+/* Separator Line */
+.separator {
+    height: 1px;
+    background: var(--separator);
+    margin-left: 58px;
+    /* Inset to align with text */
+}
+
+/* Form Styling */
+.apple-input {
     width: 100%;
-    padding: 14px 16px;
-    background: var(--fill-quaternary);
-    border: 0.5px solid var(--separator);
-    border-radius: var(--radius-medium);
-    font-family: var(--font-text);
+    border: none;
+    background: transparent;
+    font-family: inherit;
     font-size: var(--body-size);
     color: var(--label-primary);
-    transition: all var(--spring-duration-fast) var(--spring-smooth);
+    outline: none;
+    padding: 4px 0;
 }
 
-.form-group input::placeholder,
-.form-group textarea::placeholder {
+.apple-input::placeholder {
     color: var(--label-tertiary);
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--system-blue);
-    background: var(--background-primary);
-    box-shadow: 0 0 0 4px color-mix(in srgb, var(--system-blue) 20%, transparent);
+.apple-input:focus::placeholder {
+    color: var(--label-quaternary);
 }
 
-.form-group textarea {
+textarea.apple-input {
     resize: vertical;
-    min-height: 120px;
+    min-height: 100px;
+    margin-top: 4px;
 }
 
-.contact-form .btn {
+.form-actions {
+    padding: var(--spacing-lg);
+    background: transparent;
+}
+
+.apple-button {
     width: 100%;
+    background: var(--system-blue);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: var(--body-size);
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s ease, filter 0.2s ease;
+}
+
+.apple-button:hover {
+    filter: brightness(1.1);
+}
+
+.apple-button:active {
+    transform: scale(0.98);
+    filter: brightness(0.9);
 }
 
 /* ============================================
@@ -1636,9 +2163,20 @@ section {
     }
 
     /* Contact */
-    .contact-content {
-        grid-template-columns: 1fr;
+    .contact {
+        min-height: auto;
+        /* Reset height on mobile */
+        padding: 60px 0;
     }
+
+    .contact-wrapper {
+        flex-direction: column;
+        /* Stack on mobile */
+        gap: var(--spacing-xl);
+        max-width: 100%;
+        /* Full width on mobile */
+    }
+
 
     /* Footer */
     .footer-content {
