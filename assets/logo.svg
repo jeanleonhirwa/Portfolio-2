@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- Camera body -->
+  <rect x="6" y="14" width="36" height="24" rx="3" stroke="#c8a951" stroke-width="2.5" fill="none"/>
+  <!-- Camera lens ring -->
+  <circle cx="24" cy="26" r="8" stroke="#c8a951" stroke-width="2.5" fill="none"/>
+  <!-- Camera viewfinder bump -->
+  <path d="M17 14V11a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3" stroke="#c8a951" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Inner lens dot (subtle AI indicator) -->
+  <circle cx="24" cy="26" r="3" fill="#c8a951" opacity="0.25"/>
+  <!-- Shutter button -->
+  <circle cx="36" cy="10" r="2.5" fill="#c8a951" opacity="0.8"/>
+</svg>
